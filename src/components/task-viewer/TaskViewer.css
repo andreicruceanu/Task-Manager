@@ -1,0 +1,10 @@
+.task-list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.task-viewer-contaier {
+  width: 70%;
+  border-radius: 14px;
+  background-color: #f3f3fb;
+}

@@ -1,6 +1,7 @@
 import "./App.css";
 import "the-new-css-reset/css/reset.css";
 import { TaskViewer } from "./components/task-viewer/TaskViewer";
+import { CreateTaskForm } from "./components/create-task-from/CreateTaskForm";
 function App() {
   const data = [
     {
@@ -51,6 +52,12 @@ function App() {
     <div className="app-container">
       <div className="app-content">
         <TaskViewer taskList={data} />
+        <div className="side-bar-right">
+          <div className="card-xl">
+            <h3 className="create-task-title">Create Task</h3>
+            <CreateTaskForm />
+          </div>
+        </div>
       </div>
     </div>
   );

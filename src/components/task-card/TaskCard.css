@@ -7,7 +7,7 @@
   grid-template-rows: max-content auto max-content;
   padding: 20px;
   gap: 15px;
-  margin: 50px 50px;
+  margin: 30px 30px;
   box-shadow: 0px 30px 60px rgba(32, 56, 85, 0.15);
 }
 .card-header {

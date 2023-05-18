@@ -1,13 +1,26 @@
 .app-container {
-  background-color: #f3f3fb;
+  background-color: #fff;
   min-height: 100vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-.task-list-container {
+.app-content {
+  margin: 50px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+}
+.side-bar-right {
+  width: 20%;
+
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: 0px 30px 60px rgba(32, 56, 85, 0.15);
+  padding: 25px;
+}
+.create-task-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
