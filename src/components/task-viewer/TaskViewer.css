@@ -8,21 +8,3 @@
   border-radius: 14px;
   background-color: #f3f3fb;
 }
-.control-panel-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin: 30px;
-}
-.control-panel-title {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 22px;
-}
-.control-panel-subtitle {
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 22px;
-  margin-top: 5px;
-}

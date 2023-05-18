@@ -1,9 +1,8 @@
 import "./App.css";
 import "the-new-css-reset/css/reset.css";
 import { TaskViewer } from "./components/task-viewer/TaskViewer";
-import { CreateTaskForm } from "./components/create-task-from/CreateTaskForm";
 import { useState } from "react";
-import { Modal } from "./components/modal/Modal";
+
 const data = [
   {
     id: "T-1",
@@ -51,11 +50,6 @@ const data = [
 
 function App() {
   const [taskList, setTaskList] = useState(data);
-  const [openModal, setOpenModal] = useState(false);
-
-  const clickOpenModal = () => setOpenModal(true);
-
-  const closeModal = () => setOpenModal(false);
 
   const addTask = (newTask) => {
     setTaskList((prevState) => [
@@ -67,17 +61,12 @@ function App() {
         status: "Todo",
       },
     ]);
-    setOpenModal(false);
   };
   return (
     <div className="app-container">
       <div className="app-content">
-        <TaskViewer taskList={taskList} clickOpenModal={clickOpenModal} />
+        <TaskViewer taskList={taskList} addTask={addTask} />
       </div>
-      <Modal openModal={openModal} closeModal={closeModal}>
-        <h3 className="create-task-title">Create Task</h3>
-        <CreateTaskForm addTask={addTask} />
-      </Modal>
     </div>
   );
 }
