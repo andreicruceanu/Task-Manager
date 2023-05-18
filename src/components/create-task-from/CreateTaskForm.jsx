@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./CreateTaskForm.css";
 
-export const CreateTaskForm = () => {
+export const CreateTaskForm = ({ addTask }) => {
   const [formData, setFormData] = useState({
     taskName: "",
     taskDueDate: "",
@@ -19,10 +19,25 @@ export const CreateTaskForm = () => {
     setFormData((prevState) => ({ ...prevState, taskDetails: e.target.value }));
   };
 
+  const resetForm = () => {
+    setFormData({
+      taskName: "",
+      taskDueDate: "",
+      taskDetails: "",
+    });
+  };
+
   const handleSubmitForm = (e) => {
     e.preventDefault();
 
-    console.log(formData);
+    const newTask = {
+      name: formData.taskName,
+      details: formData.taskDetails,
+      dueDate: formData.taskDueDate,
+    };
+
+    addTask(newTask);
+    resetForm();
   };
 
   return (
@@ -31,6 +46,7 @@ export const CreateTaskForm = () => {
         <div className="form-create-task-row">
           <label htmlFor="taskName">Task Name</label>
           <input
+            value={formData.taskName}
             className="input-primary"
             type="text"
             id="taskName"
@@ -41,6 +57,7 @@ export const CreateTaskForm = () => {
         <div className="form-create-task-row">
           <label htmlFor="taskDueDate">Due Date</label>
           <input
+            value={formData.taskDueDate}
             className="input-primary"
             type="date"
             id="taskDueDate"
@@ -51,6 +68,7 @@ export const CreateTaskForm = () => {
         <div className="form-create-task-row">
           <label htmlFor="taskDetails">Task Details</label>
           <textarea
+            value={formData.taskDetails}
             className="input-primary"
             id="taskDetails"
             name="taskDetails"
