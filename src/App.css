@@ -1,15 +1,14 @@
 .app-container {
   background-color: #fff;
   min-height: 100vh;
+  max-height: 100vh;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  padding: 30px;
 }
 .app-content {
-  margin: 50px;
   display: flex;
   flex-direction: row;
+  flex: 1;
 }
 .side-bar-right {
   width: 20%;

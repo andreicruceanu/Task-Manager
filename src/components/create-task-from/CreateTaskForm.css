@@ -27,7 +27,8 @@
 textarea.input-primary {
   resize: none;
 }
-.btn-primaty {
+
+.btn-primary {
   background: #3754db;
   border-radius: 12px;
   padding: 19px 74px;
@@ -39,4 +40,29 @@ textarea.input-primary {
   cursor: pointer;
   font-family: "Sen", sans-serif;
   white-space: nowrap;
+}
+input.error,
+textarea.error {
+  border-color: #fb151a;
+  background-color: #fffafa;
+}
+p.error-message {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  color: #b80020;
+  height: 14px;
+}
+.btn-primary:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+.btn-primary:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0 0);
+  background-blend-mode: lighten;
+  background-blend-mode: darken;
+}
+.text-center {
+  text-align: center;
 }

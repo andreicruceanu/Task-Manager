@@ -4,7 +4,7 @@
   flex-wrap: wrap;
 }
 .task-viewer-contaier {
-  width: 70%;
+  width: 100%;
   border-radius: 14px;
   background-color: #f3f3fb;
 }

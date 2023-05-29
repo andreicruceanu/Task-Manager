@@ -1,0 +1,27 @@
+.empty-list-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 5%;
+}
+.empty-list-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.task-icon {
+  height: 140px;
+  width: auto;
+  margin-bottom: 40px;
+}
+.view-title {
+  font-size: 25px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+.subtitle {
+  margin: 12px 0;
+}

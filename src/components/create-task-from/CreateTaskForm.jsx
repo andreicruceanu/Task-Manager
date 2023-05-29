@@ -1,84 +1,81 @@
-import { useState } from "react";
 import "./CreateTaskForm.css";
+import { useForm } from "react-hook-form";
 
 export const CreateTaskForm = ({ addTask }) => {
-  const [formData, setFormData] = useState({
-    taskName: "",
-    taskDueDate: "",
-    taskDetails: "",
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm({
+    mode: "onTouched",
   });
 
-  const handleChangeName = (e) => {
-    setFormData((prevState) => ({ ...prevState, taskName: e.target.value }));
-  };
-
-  const handleChangeDueDate = (e) => {
-    setFormData((prevState) => ({ ...prevState, taskDueDate: e.target.value }));
-  };
-  const handleChangeDetails = (e) => {
-    setFormData((prevState) => ({ ...prevState, taskDetails: e.target.value }));
-  };
-
-  const resetForm = () => {
-    setFormData({
-      taskName: "",
-      taskDueDate: "",
-      taskDetails: "",
-    });
-  };
-
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
-
+  const onSubmitForm = (data) => {
     const newTask = {
-      name: formData.taskName,
-      details: formData.taskDetails,
-      dueDate: formData.taskDueDate,
+      name: data.taskName,
+      dueDate: data.taskDueDate,
+      details: data.taskDetails,
     };
 
     addTask(newTask);
-    resetForm();
   };
 
   return (
     <div className="create-task-container">
-      <form onSubmit={handleSubmitForm}>
+      <form onSubmit={handleSubmit(onSubmitForm)}>
         <div className="form-create-task-row">
           <label htmlFor="taskName">Task Name</label>
           <input
-            value={formData.taskName}
-            className="input-primary"
+            {...register("taskName", {
+              required: { value: true, message: "Task Name is required" },
+              maxLength: {
+                value: 30,
+                message: "Maximum allowed lenght is 30 charecters",
+              },
+            })}
+            className={`input-primary ${errors.taskName && "error"}`}
             type="text"
             id="taskName"
             name="taskName"
-            onChange={handleChangeName}
           />
+          {errors.taskName && (
+            <p className="error-message">{errors.taskName.message}</p>
+          )}
         </div>
         <div className="form-create-task-row">
           <label htmlFor="taskDueDate">Due Date</label>
           <input
-            value={formData.taskDueDate}
-            className="input-primary"
+            {...register("taskDueDate", {
+              required: { value: true, message: "Due Date is required" },
+            })}
+            className={`input-primary ${errors.taskDueDate && "error"}`}
             type="date"
             id="taskDueDate"
             name="taskDueDate"
-            onChange={handleChangeDueDate}
+            min={new Date().toISOString().split("T")[0]}
           />
+          {errors.taskDueDate && (
+            <p className="error-message">{errors.taskDueDate.message}</p>
+          )}
         </div>
         <div className="form-create-task-row">
           <label htmlFor="taskDetails">Task Details</label>
           <textarea
-            value={formData.taskDetails}
-            className="input-primary"
+            {...register("taskDetails", {
+              required: { value: true, message: "Task Details is required" },
+            })}
+            className={`input-primary ${errors.taskDetails && "error"}`}
             id="taskDetails"
             name="taskDetails"
             rows="4"
             cols="50"
-            onChange={handleChangeDetails}
           />
+          {errors.taskDetails && (
+            <p className="error-message">{errors.taskDetails.message}</p>
+          )}
         </div>
-        <div className="create-task-btn">
-          <button type="submit" className="btn-primaty">
+        <div className="create-task-btn text-center">
+          <button type="submit" className="btn-primary" disabled={!isValid}>
             Create Task
           </button>
         </div>

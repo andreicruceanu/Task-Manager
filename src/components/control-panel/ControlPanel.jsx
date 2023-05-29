@@ -1,11 +1,13 @@
-import { useState } from "react";
 import { Modal } from "../modal/Modal";
 import "./ControlPanel.css";
 import { CreateTaskForm } from "../create-task-from/CreateTaskForm";
 
-export const ControlPanel = ({ addTask }) => {
-  const [openModal, setOpenModal] = useState(false);
-
+export const ControlPanel = ({
+  setOpenModal,
+  openModal,
+  addTask,
+  taskList,
+}) => {
   const clickOpenModal = () => setOpenModal(true);
 
   const closeModal = () => setOpenModal(false);
@@ -21,9 +23,11 @@ export const ControlPanel = ({ addTask }) => {
         <h3 className="control-panel-title">Tasks</h3>
         <p className="control-panel-subtitle">Your tasks in your space.</p>
       </div>
-      <button onClick={clickOpenModal} className="btn-primaty">
-        Create Task
-      </button>
+      {taskList.length > 0 && (
+        <button onClick={clickOpenModal} className="btn-primary">
+          Create Task
+        </button>
+      )}
 
       <Modal openModal={openModal} closeModal={closeModal}>
         <h3 className="create-task-title">Create Task</h3>
