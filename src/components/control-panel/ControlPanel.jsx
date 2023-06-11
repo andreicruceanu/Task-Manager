@@ -1,6 +1,7 @@
 import { Modal } from "../modal/Modal";
 import "./ControlPanel.css";
 import { CreateTaskForm } from "../create-task-from/CreateTaskForm";
+import { TaskFilter } from "../task-filter/TaskFilter.jsx";
 
 export const ControlPanel = ({
   setOpenModal,
@@ -19,15 +20,21 @@ export const ControlPanel = ({
 
   return (
     <div className="control-panel-container">
-      <div>
-        <h3 className="control-panel-title">Tasks</h3>
-        <p className="control-panel-subtitle">Your tasks in your space.</p>
+      <div className="task-details-row">
+        <div>
+          <h3 className="control-panel-title">Tasks</h3>
+          <p className="control-panel-subtitle">Your tasks in your space.</p>
+        </div>
+
+        {taskList.length > 0 && (
+          <button onClick={clickOpenModal} className="btn-primary">
+            Create Task
+          </button>
+        )}
       </div>
-      {taskList.length > 0 && (
-        <button onClick={clickOpenModal} className="btn-primary">
-          Create Task
-        </button>
-      )}
+      <div>
+        <TaskFilter />
+      </div>
 
       <Modal openModal={openModal} closeModal={closeModal}>
         <h3 className="create-task-title">Create Task</h3>

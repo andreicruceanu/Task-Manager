@@ -1,7 +1,7 @@
 import "./App.css";
 import "the-new-css-reset/css/reset.css";
 import { TaskViewer } from "./components/task-viewer/TaskViewer";
-import { useState } from "react";
+import { useState, createContext } from "react";
 
 const data = [
   {
@@ -48,6 +48,8 @@ const data = [
   },
 ];
 
+export const TodoContext = createContext();
+
 function App() {
   const [taskList, setTaskList] = useState(data);
 
@@ -65,7 +67,9 @@ function App() {
   return (
     <div className="app-container">
       <div className="app-content">
-        <TaskViewer taskList={taskList} addTask={addTask} />
+        <TodoContext.Provider value={taskList}>
+          <TaskViewer taskList={taskList} addTask={addTask} />
+        </TodoContext.Provider>
       </div>
     </div>
   );

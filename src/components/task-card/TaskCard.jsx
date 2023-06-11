@@ -1,4 +1,4 @@
-import { Badges } from "../badge/Badge";
+import { Badges } from "../badge/Badges";
 import { DateContainer } from "../date-container/DateContainer";
 import "./TaskCard.css";
 
